@@ -1,0 +1,123 @@
+.title-event {
+  width: 100%;
+  height: auto;
+  background-color: var(--bg-color);
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZarNDR7NeKoYVpsQzK-9YWc3w0VFe6oUbKg&s');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.event-list {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px;
+  margin: 60px 0;
+}
+
+.event-card {
+  flex: 1 1 calc(33.33% - 24px);
+  max-width: 350px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  overflow: hidden;
+  text-align: center;
+}
+
+.event-details {
+  margin-bottom: 10px;
+}
+
+.event-details h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.event-details p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.event-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 5px;
+  font-style: italic;
+  font-size: 14px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+button:hover {
+  opacity: 1.8;
+}
+
+button:nth-of-type(2) {
+  background-color: red;
+  color: white;
+}
+
+button:nth-of-type(1) {
+  background-color: blue;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  button {
+    padding: 8px 16px;
+  }
+}
+
+.event-management-title {
+  font-size: 2.5rem;
+  font-style: italic;
+  color: purple;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.add-new-event-title {
+  font-size: 2rem;
+  font-style: italic;
+  color: blue;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+  .event-list {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .event-card {
+    flex: 1 1 90%;
+    max-width: 90%;
+    margin: 10px auto;
+  }
+
+  button {
+    padding: 8px 16px;
+  }
+}

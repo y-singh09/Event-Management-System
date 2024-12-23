@@ -1,0 +1,18 @@
+[
+    {
+        "id": "1",
+        "event": "Birthday Party",
+        "name": "Dancing",
+        "deadline": "2024-12-26",
+        "status": "Pending",
+        "assignedAttendee": "Yuvi singh"
+    },
+    {
+        "id": "2",
+        "event": "Holi Party",
+        "name": "Singing",
+        "deadline": "2024-12-25",
+        "status": "Completed",
+        "assignedAttendee": "Sweta Singh"
+    }
+]
