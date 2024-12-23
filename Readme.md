@@ -1,5 +1,7 @@
 # Event Management System
 #### An Event Management System built with React for the frontend and Flask for the backend. This project allows users to manage events, attendees, and tasks effectively. Users can create, edit, delete events, manage attendees, and track tasks.
+- **Check the Below Link to view the Project:**  
+https://event-management-system-w2fd6gyk3-yuvraaj-singhs-projects.vercel.app/
 
 ## Project Overview
 
