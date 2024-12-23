@@ -26,13 +26,13 @@
 ## Screenshots
 
 - **Home Page**
-![Screenshot 1](screenshot1.png)
+![Screenshot 1](ScreenShot/Screenshot1.png)
 
 - **Event Management**
-![Screenshot 2](screenshot2.png)
+![Screenshot 2](ScreenShot/Screenshot2.png)
 
 - **Task Tracker**
-![Screenshot 3](screenshot3.png)
+![Screenshot 3](ScreenShot/Screenshot3.png)
 
 ## Installation and Setup
 
