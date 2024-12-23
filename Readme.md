@@ -1,4 +1,4 @@
-## Event Management System
+# Event Management System
 #### An Event Management System built with React for the frontend and Flask for the backend. This project allows users to manage events, attendees, and tasks effectively. Users can create, edit, delete events, manage attendees, and track tasks.
 
 ## Project Overview
@@ -46,10 +46,10 @@ Ensure you have the following installed on your system:
 
 #### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/repository-name.git
+git clone https://github.com/y-singh09/Event-Management-System.git
 ```
 ```bash
-cd repository-name
+cd Event-Management-System
 ```
 #### 2. Backend Setup (Flask)
 #### 1.Navigate to the backend folder:
