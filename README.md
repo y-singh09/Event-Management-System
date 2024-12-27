@@ -36,21 +36,17 @@ The Event Management System is a web application designed to simplify event orga
     ```
 
 ### ScreenShots
-![Event Management Screenshot](screenshots/Screenshot_01.png)
-![Event Management Screenshot](screenshots/Screenshot_02.png)
-![Event Management Screenshot](screenshots/Screenshot_03.png)
-![Event Management Screenshot](screenshots/Screenshot_04.png)
+![Event Management Screenshot](ScreenShot/Screenshot1.png)
+![Event Management Screenshot](ScreenShot/Screenshot2.png)
+![Event Management Screenshot](ScreenShot/Screenshot3.png)
+
 
 ### Running the Application
 1. Start the backend server:
     ```sh
     flask run
     ```
-2. Start the frontend development server:
-    ```sh
-    cd frontend
-    npm start
-    ```
+2. Note: The frontend is already deployed, so you only need to run the backend locally.
 3. Open `http://localhost:3000` in your web browser to access the application.
 
 ## How to Use
