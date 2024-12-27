@@ -12,22 +12,22 @@ const TaskTracker = () => {
     status: "Pending",
     assignedAttendee: "",
   });
-  const [loading, setLoading] = useState(false); // New loading state
-  const [error, setError] = useState(null); // New error state
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null); 
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const eventsResponse = await fetch("http://localhost:5000/api/events");
+        const eventsResponse = await fetch("https://bare-karmen-destroyer0911-9efa2123.koyeb.app/events");
         const eventsData = await eventsResponse.json();
         setEvents(eventsData);
 
-        const tasksResponse = await fetch("http://localhost:5000/api/tasks");
+        const tasksResponse = await fetch("https://bare-karmen-destroyer0911-9efa2123.koyeb.app/tasks");
         const tasksData = await tasksResponse.json();
         setTasks(tasksData);
 
-        const attendeesResponse = await fetch("http://localhost:5000/api/attendees");
+        const attendeesResponse = await fetch("https://bare-karmen-destroyer0911-9efa2123.koyeb.app/attendees");
         const attendeesData = await attendeesResponse.json();
         setAttendees(attendeesData);
       } catch (error) {
@@ -55,7 +55,7 @@ const TaskTracker = () => {
     setTasks([...tasks, newTaskData]);
 
     try {
-      await fetch("http://localhost:5000/api/tasks", {
+      await fetch("https://bare-karmen-destroyer0911-9efa2123.koyeb.app/tasks", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newTaskData),
@@ -83,7 +83,7 @@ const TaskTracker = () => {
     );
 
     try {
-      await fetch(`http://localhost:5000/api/tasks/${id}`, {
+      await fetch(`https://bare-karmen-destroyer0911-9efa2123.koyeb.app/tasks/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: updatedStatus }),

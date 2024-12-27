@@ -10,12 +10,12 @@ const AttendeeManagement = () => {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/events")
+    fetch("https://bare-karmen-destroyer0911-9efa2123.koyeb.app/events")
       .then((response) => response.json())
       .then((data) => setEvents(data))
       .catch((error) => console.error("Error fetching events:", error));
 
-    fetch("http://localhost:5000/api/attendees")
+    fetch("https://bare-karmen-destroyer0911-9efa2123.koyeb.app/attendees")
       .then((response) => response.json())
       .then((data) => setAttendees(data))
       .catch((error) => console.error("Error fetching attendees:", error));
@@ -33,7 +33,7 @@ const AttendeeManagement = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:5000/api/attendees", {
+      const response = await fetch("https://bare-karmen-destroyer0911-9efa2123.koyeb.app/attendees", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newAttendeeData),
@@ -53,7 +53,7 @@ const AttendeeManagement = () => {
 
   const handleRemoveAttendee = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/attendees/${id}`, {
+      const response = await fetch(`https://bare-karmen-destroyer0911-9efa2123.koyeb.app/attendees/${id}`, {
         method: "DELETE",
       });
       if (response.ok) {

@@ -4,7 +4,7 @@ import "./Home.css";
 
 const Home = () => {
   const [eventList, setEventList] = useState([]);
-  const [attendeesList, setAttendeesList] = useState({});
+  const [attendeesList, setAttendeesList] = useState({}); 
   const [newEvent, setNewEvent] = useState({
     id: "",
     date: "",
@@ -19,7 +19,7 @@ const Home = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/events");
+        const response = await fetch("https://bare-karmen-destroyer0911-9efa2123.koyeb.app/events");
         if (response.ok) {
           const data = await response.json();
           setEventList(data);
@@ -33,11 +33,13 @@ const Home = () => {
     fetchEvents();
   }, []);
 
+
   const fetchAttendees = async (eventName) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/attendees`);
+      const response = await fetch(`https://bare-karmen-destroyer0911-9efa2123.koyeb.app/attendees`);
       if (response.ok) {
         const data = await response.json();
+   
         const eventAttendees = data.filter((attendee) => attendee.assignedEvent === eventName);
         setAttendeesList((prev) => ({
           ...prev,
@@ -56,7 +58,9 @@ const Home = () => {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/events/${id}`, { method: "DELETE" });
+      const response = await fetch(`https://bare-karmen-destroyer0911-9efa2123.koyeb.app/events/${id}`, {
+        method: "DELETE",
+      });
       if (response.ok) {
         setEventList(eventList.filter((event) => event.id !== id));
         setAttendeesList((prev) => {
@@ -76,15 +80,21 @@ const Home = () => {
     try {
       const method = editing ? "PUT" : "POST";
       const url = editing
-        ? `http://localhost:5000/api/events/${newEvent.id}`
-        : "http://localhost:5000/api/events";
+        ? `https://bare-karmen-destroyer0911-9efa2123.koyeb.app/events/${newEvent.id}`
+        : "https://bare-karmen-destroyer0911-9efa2123.koyeb.app/events";
+        console.log('Method:', method); // Check the HTTP method
+        console.log('URL:', url); // Check the URL
+        console.log("newEvent:", newEvent);
 
+  
       const response = await fetch(url, {
+        
         method,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newEvent),
       });
-
+      console.log(newEvent.id);
+  
       if (response.ok) {
         const data = await response.json();
         if (editing) {
@@ -104,7 +114,7 @@ const Home = () => {
       console.error("Error saving event:", error);
     }
   };
-
+  
   const handleEdit = (event) => {
     setNewEvent(event);
     setEditing(true);
@@ -128,6 +138,7 @@ const Home = () => {
     setNewEvent({ ...newEvent, [name]: value });
   };
 
+
   const renderEventCards = () => {
     return eventList.map(({ id, date, heading, location, description, img, count }) => (
       <div key={id}>
@@ -144,12 +155,14 @@ const Home = () => {
           Edit
         </button>
         <button onClick={() => handleDelete(id)}>Delete</button>
-        <button onClick={() => fetchAttendees(heading)} style={{ color: 'white', fontSize: "1.2rem" }}>
-          View Attendees
-        </button>
+
+
+        <button onClick={() => fetchAttendees(heading)}  style={{ color: 'white',fontSize:"1.2rem"}}>View Attendees</button>
+
+  
         {attendeesList[heading] && (
           <div style={{color:"white"}}>
-            <h4>Attendees ({attendeesList[heading].count}):</h4>
+            <h4 >Attendees ({attendeesList[heading].count}):</h4>
             <ul>
               {attendeesList[heading].attendees.map((attendee) => (
                 <li key={attendee.id}>{attendee.name}</li>
@@ -162,7 +175,8 @@ const Home = () => {
   };
 
   return (
-    <div className="title-event">
+ <div className="title-event">
+ 
       <h1 className="event-management-title" style={{color:"white"}}>Event Management</h1>
       <div className="event-form">
         <h2 className="add-new-event-title">
@@ -213,6 +227,7 @@ const Home = () => {
         </div>
       </div>
     </div>
+ 
   );
 };
 
