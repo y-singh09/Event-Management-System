@@ -19,7 +19,7 @@ const Home = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch("https://bare-karmen-destroyer0911-9efa2123.koyeb.app/events");
+        const response = await fetch("https://localhost:/5000/api/events");
         if (response.ok) {
           const data = await response.json();
           setEventList(data);
@@ -36,7 +36,7 @@ const Home = () => {
 
   const fetchAttendees = async (eventName) => {
     try {
-      const response = await fetch(`https://bare-karmen-destroyer0911-9efa2123.koyeb.app/attendees`);
+      const response = await fetch(`http://localhost:5000/api/attendees`);
       if (response.ok) {
         const data = await response.json();
    
@@ -58,7 +58,7 @@ const Home = () => {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`https://bare-karmen-destroyer0911-9efa2123.koyeb.app/events/${id}`, {
+      const response = await fetch(`http://localhost:5000/api/events/${id}`, {
         method: "DELETE",
       });
       if (response.ok) {
@@ -80,8 +80,8 @@ const Home = () => {
     try {
       const method = editing ? "PUT" : "POST";
       const url = editing
-        ? `https://bare-karmen-destroyer0911-9efa2123.koyeb.app/events/${newEvent.id}`
-        : "https://bare-karmen-destroyer0911-9efa2123.koyeb.app/events";
+        ? `http://localhost:5000/api/events/${newEvent.id}`
+        : "http://localhost:5000/api/events";
         console.log('Method:', method); // Check the HTTP method
         console.log('URL:', url); // Check the URL
         console.log("newEvent:", newEvent);
