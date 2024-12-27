@@ -42,6 +42,25 @@ def create_event():
     save_file(EVENTS_FILE, events)
     return jsonify({'message': 'Event created', 'event': event_data}), 201
 
+@app.route('/api/events/<event_id>', methods=['PUT'])
+def update_event(event_id):
+    print(f"Received PUT request for event ID: {event_id}")  
+    updated_event_data = request.json
+    events = load_file(EVENTS_FILE)
+
+    event = next((e for e in events if str(e['id']) == str(event_id)), None)
+    if not event:
+        return jsonify({'error': 'Event not found'}), 404
+
+    for key, value in updated_event_data.items():
+        if key in event:
+            event[key] = value
+
+    save_file(EVENTS_FILE, events)
+
+    return jsonify({'message': 'Event updated successfully', 'event': event}), 200
+
+
 @app.route('/api/events/<event_id>', methods=['DELETE'])
 def delete_event(event_id):
     events = load_file(EVENTS_FILE)
@@ -66,25 +85,57 @@ def create_task():
     save_file(TASKS_FILE, tasks)
     return jsonify({'message': 'Task created', 'task': task_data}), 201
 
-@app.route('/api/tasks/<task_id>', methods=['PUT'])
+@app.route('/api/tasks/<task_id>', methods=['PUT'])  
 def update_task(task_id):
     updated_task_data = request.json
+    print(f"Received updated task data: {updated_task_data}") 
+
     tasks = load_file(TASKS_FILE)
+
     task = next((t for t in tasks if t['id'] == task_id), None)
+
     if not task:
+        print(f"Task with id {task_id} not found.") 
         return jsonify({'error': 'Task not found'}), 404
 
     allowed_statuses = ["Pending", "Completed", "In Progress"]
     new_status = updated_task_data.get('status')
-    if new_status and new_status not in allowed_statuses:
-        return jsonify({'error': f"Invalid status value. Allowed values are: {', '.join(allowed_statuses)}."}), 400
 
     if new_status:
+        if new_status not in allowed_statuses:
+            print(f"Invalid status value: {new_status}") 
+            return jsonify({'error': f"Invalid status value. Allowed values are: {', '.join(allowed_statuses)}."}), 400
         task['status'] = new_status
 
-    task.update({k: v for k, v in updated_task_data.items() if k != 'status'})
+   
+    if 'name' in updated_task_data:
+        task['name'] = updated_task_data['name']
+    if 'deadline' in updated_task_data:
+        task['deadline'] = updated_task_data['deadline']
+    if 'assignedAttendee' in updated_task_data:
+        task['assignedAttendee'] = updated_task_data['assignedAttendee']
+
+    print(f"Updated task: {task}")
+
+  
+    save_file(TASKS_FILE, tasks)
+
+    return jsonify({'message': 'Task updated successfully', 'task': task}), 200
+
+
+    if 'name' in updated_task_data:
+        task['name'] = updated_task_data['name']
+    if 'deadline' in updated_task_data:
+        task['deadline'] = updated_task_data['deadline']
+    if 'assignedAttendee' in updated_task_data:
+        task['assignedAttendee'] = updated_task_data['assignedAttendee']
+    
+
+    print(f"Updated task: {task}")
+
 
     save_file(TASKS_FILE, tasks)
+
     return jsonify({'message': 'Task updated successfully', 'task': task}), 200
 
 @app.route('/api/tasks/<task_id>', methods=['DELETE'])
@@ -96,6 +147,12 @@ def delete_task(task_id):
     tasks = [t for t in tasks if t['id'] != task_id]
     save_file(TASKS_FILE, tasks)
     return jsonify({'message': 'Task deleted'}), 200
+
+@app.route('/api/tasks/event/<event_id>', methods=['GET'])
+def get_tasks_by_event(event_id):
+    tasks = load_file(TASKS_FILE)
+    event_tasks = [task for task in tasks if task.get('event') == event_id]
+    return jsonify(event_tasks), 200
 
 @app.route('/api/attendees', methods=['GET'])
 def get_attendees():
@@ -137,7 +194,7 @@ def delete_attendee(attendee_id):
 @app.route('/api/events/<event_id>/attendees', methods=['GET'])
 def get_attendees_by_event(event_id):
     attendees = load_file(ATTENDEES_FILE)
-    event_attendees = [attendee for attendee in attendees if attendee.get('assignedEvent') == event_id]
+    event_attendees = [attendee for attendee in attendees if attendee['assignedEvent'] == event_id]
     return jsonify({'attendees': event_attendees, 'count': len(event_attendees)}), 200
 
 if __name__ == '__main__':

@@ -5,8 +5,13 @@
         "id": "1"
     },
     {
-        "name": "Sweta Singh",
-        "assignedEvent": "Gaming Event",
+        "name": "Orange",
+        "assignedEvent": "Birthday Fiesta",
         "id": "2"
+    },
+    {
+        "name": "Sweta Singh",
+        "assignedEvent": "Birthday Fiesta",
+        "id": "3"
     }
 ]

@@ -14,5 +14,29 @@
         "deadline": "2024-12-25",
         "status": "Completed",
         "assignedAttendee": "Sweta Singh"
+    },
+    {
+        "id": "3",
+        "event": "Holi Party",
+        "name": "Singing",
+        "deadline": "2025-03-23",
+        "status": "Pending",
+        "assignedAttendee": "Yuvi singh"
+    },
+    {
+        "id": "4",
+        "event": "Birthday Fiesta",
+        "name": "Dance",
+        "deadline": "2024-12-28",
+        "status": "Completed",
+        "assignedAttendee": "Orange"
+    },
+    {
+        "id": "5",
+        "event": "Birthday Fiesta",
+        "name": "Singing",
+        "deadline": "2024-12-25",
+        "status": "Completed",
+        "assignedAttendee": "Sweta Singh"
     }
 ]
